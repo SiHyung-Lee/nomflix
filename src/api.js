@@ -43,5 +43,3 @@ export const tvApi = {
             }
         })
 };
-
-console.log(tvApi.topRated());
