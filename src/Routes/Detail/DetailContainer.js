@@ -13,8 +13,12 @@ export default class extends React.Component {
             match: {
                 params: {id}
             },
-            history: {push}
+            history: {push},
+            location: {pathname}
         } = this.props;
+        console.log(this.props);
+        console.log()
+        this.isMovie = pathname.includes("/movie");
         const parsedId = parseInt(id);
         if (isNaN(parsedId)) {
             return push("/");
