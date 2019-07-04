@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Route, Redirect, Switch} from "react-router-dom
 import Home from "Routes/Home";
 import TV from "Routes/TV";
 import Search from "Routes/Search";
-import Header from 'Components/Header';
-import Detail from 'Routes/Detail';
+import Header from "Components/Header";
+import Detail from "Routes/Detail";
 
 export default () => (
     <Router>
