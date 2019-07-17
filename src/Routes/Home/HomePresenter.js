@@ -8,7 +8,7 @@ import Poster from "Components/Poster";
 
 console.log(Poster);
 const Container = styled.div`
-  padding:0 10px;
+  padding:20px;
 `;
 
 const HomePresenter = ({nowPlaying, popular, upcoming, loading, error}) =>
