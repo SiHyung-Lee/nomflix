@@ -68,6 +68,10 @@ const Overview = styled.p`
   width: 50%;
 `;
 
+const Videos = styled.div`
+
+`;
+
 const DetailPresenter = ({result, loading, error}) =>
     loading ? (
         <>
@@ -124,6 +128,19 @@ const DetailPresenter = ({result, loading, error}) =>
                         </Item>
                     </ItemContainer>
                     <Overview>{result.overview}</Overview>
+                    <Videos>
+                        {result.videos.results.map((video, index) =>
+                            //`${video.key} / `
+                            <iframe
+                                id="ytplayer"
+                                type="text/html"
+                                width="640"
+                                height="360"
+                                src="https://www.youtube.com/embed/${video.key}"
+                                frameBorder="0"
+                            />
+                        )}
+                    </Videos>
                 </Data>
             </Content>
         </Container>
