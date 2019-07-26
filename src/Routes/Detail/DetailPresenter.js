@@ -42,7 +42,7 @@ const Cover = styled.div`
 
 const Data = styled.div`
   width: 70%;
-  margin-left: 10px;
+  margin-left: 50px;
 `;
 
 const Title = styled.h3`
@@ -62,14 +62,22 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-  font-size: 12px;
+  font-size: 14px;
   opacity: .7;
   line-height: 1.5;
-  width: 50%;
 `;
 
-const Videos = styled.div`
+const VideoContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px 0;
+`;
 
+const Video = styled.iframe`
+  width: calc(33.333% - 10px);
+  height: 50%;
+  margin-right: 10px;
+  margin-bottom: 10px;
 `;
 
 const DetailPresenter = ({result, loading, error}) =>
@@ -128,19 +136,18 @@ const DetailPresenter = ({result, loading, error}) =>
                         </Item>
                     </ItemContainer>
                     <Overview>{result.overview}</Overview>
-                    <Videos>
-                        {result.videos.results.map((video, index) =>
-                            //`${video.key} / `
-                            <iframe
+                    <VideoContainer>
+                        {result.videos.results.map(video =>
+                            <Video
                                 id="ytplayer"
                                 type="text/html"
                                 width="640"
                                 height="360"
-                                src="https://www.youtube.com/embed/${video.key}"
+                                src={`https://www.youtube.com/embed/${video.key}`}
                                 frameBorder="0"
                             />
                         )}
-                    </Videos>
+                    </VideoContainer>
                 </Data>
             </Content>
         </Container>
