@@ -67,6 +67,18 @@ const Overview = styled.p`
   line-height: 1.5;
 `;
 
+const TabContainer = styled.ul`
+
+`;
+
+const ProductionContainer = styled.div`
+
+`;
+
+const Production = styled.div`
+
+`;
+
 const VideoContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -136,15 +148,24 @@ const DetailPresenter = ({result, loading, error}) =>
                         </Item>
                     </ItemContainer>
                     <Overview>{result.overview}</Overview>
+                    <TabContainer>
+                        <li><button>Company</button></li>
+                        <li><button>Video</button></li>
+                    </TabContainer>
+                    <ProductionContainer>
+                        {result.production_companies.map(company =>
+                            <Production>
+                                <span>{company.name}</span>
+                                <span>{company.origin_country}</span>
+                            </Production>
+                        )};
+                    </ProductionContainer>
                     <VideoContainer>
                         {result.videos.results.map(video =>
                             <Video
                                 id="ytplayer"
                                 type="text/html"
-                                width="640"
-                                height="360"
                                 src={`https://www.youtube.com/embed/${video.key}`}
-                                frameBorder="0"
                             />
                         )}
                     </VideoContainer>
