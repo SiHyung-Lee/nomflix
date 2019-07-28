@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Helmet from "react-helmet";
 import Loader from "Components/Loader";
 
+
+
 const Container = styled.div`
   height: calc(100vh - 50px);
   width: 100%;
@@ -68,15 +70,37 @@ const Overview = styled.p`
 `;
 
 const TabContainer = styled.ul`
-
+  display: flex;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  
+  > li {
+      display: inline-block;
+      padding: 0 10px;
+      :first-child {
+        padding-left: 0;
+      }
+      :last-child {
+        padding-right: 0;
+      }
+  }
+  
+  button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #fff;
+  }
 `;
 
 const ProductionContainer = styled.div`
 
 `;
 
-const Production = styled.div`
-
+const Production = styled.ul`
+  > li {
+    margin-bottom: 10px;
+  }
 `;
 
 const VideoContainer = styled.div`
@@ -155,10 +179,10 @@ const DetailPresenter = ({result, loading, error}) =>
                     <ProductionContainer>
                         {result.production_companies.map(company =>
                             <Production>
-                                <span>{company.name}</span>
-                                <span>{company.origin_country}</span>
+                                <li><strong>Company : </strong>{company.name}</li>
+                                <li><strong>Country : </strong>{company.origin_country}</li>
                             </Production>
-                        )};
+                        )}
                     </ProductionContainer>
                     <VideoContainer>
                         {result.videos.results.map(video =>
