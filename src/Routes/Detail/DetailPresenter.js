@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Helmet from "react-helmet";
 import Loader from "Components/Loader";
-
-
+import {Link, withRouter} from "react-router-dom";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -93,13 +92,22 @@ const TabContainer = styled.ul`
   }
 `;
 
-const ProductionContainer = styled.div`
-
-`;
-
-const Production = styled.ul`
-  > li {
+const Production = styled.div`
+  h4 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  ul {
+      display: flex;
+      justify-content: left;
+  }
+  li {
     margin-bottom: 10px;
+    margin-right: 10px;
+    width: 20%;
+  }
+  img {
+    width: 100%;
   }
 `;
 
@@ -173,17 +181,16 @@ const DetailPresenter = ({result, loading, error}) =>
                     </ItemContainer>
                     <Overview>{result.overview}</Overview>
                     <TabContainer>
-                        <li><button>Company</button></li>
-                        <li><button>Video</button></li>
+                        <li><Link to="">Video</Link></li>
                     </TabContainer>
-                    <ProductionContainer>
-                        {result.production_companies.map(company =>
-                            <Production>
-                                <li><strong>Company : </strong>{company.name}</li>
-                                <li><strong>Country : </strong>{company.origin_country}</li>
-                            </Production>
-                        )}
-                    </ProductionContainer>
+                    <Production>
+                        <h4>Production Companies</h4>
+                        <ul>
+                            {result.production_companies.map(company =>
+                                <li><img src={`https://image.tmdb.org/t/p/w200${company.logo_path}`} alt={company.name}/></li>
+                            )}
+                        </ul>
+                    </Production>
                     <VideoContainer>
                         {result.videos.results.map(video =>
                             <Video
