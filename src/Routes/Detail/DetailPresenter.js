@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Helmet from "react-helmet";
 import Loader from "Components/Loader";
-import {Link, withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -181,7 +181,7 @@ const DetailPresenter = ({result, loading, error}) =>
                     </ItemContainer>
                     <Overview>{result.overview}</Overview>
                     <TabContainer>
-                        <li><Link to="">Video</Link></li>
+                        <li><Link to={`${result.id}/video`}>Video</Link></li>
                     </TabContainer>
                     <Production>
                         <h4>Production Companies</h4>
